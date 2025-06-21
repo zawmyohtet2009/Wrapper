@@ -2,7 +2,7 @@
 
 namespace Wrapper.Interface
 {
-    interface IAdvanceCalculator
+    public interface IAdvanceCalculator
     {
         /// <summary>
         /// Calculates the power of a base to an exponent.
