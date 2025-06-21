@@ -23,8 +23,8 @@ jobs:
 
       - name: Restore dependencies
         run: |
-              dotnet nuget update source github --source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" --username zawmyohtet2009 --password ${{ secrets.TOKEN }} --store-password-in-clear-text --configfile Wrapper/nuget.config
-              dotnet restore Wrapper/Wrapper.sln --configfile Wrapper/nuget.config
+              dotnet nuget update source github --source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" --username zawmyohtet2009 --password ${{ secrets.TOKEN }} --store-password-in-clear-text --configfile ${{ github.workspace }}/Wrapper/nuget.config
+              dotnet restore Wrapper/Wrapper.sln --configfile ${{ github.workspace }}/Wrapper/nuget.config
 
       - name: Build
         run: |
