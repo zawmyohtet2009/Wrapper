@@ -1,0 +1,52 @@
+name: Create and Push Nuget Package
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "release/*" ]
+  workflow_dispatch:
+
+jobs:
+  job_1:
+    name: Create Nuget Package
+    runs-on: windows-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Setup MSBuild Path
+        uses: microsoft/setup-msbuild@v2
+      
+      - name: Download NuGet.exe
+        run: curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe --output nuget.exe 
+        
+      - name: Authenticate to GitHub Packages
+        run: dotnet nuget update source github --source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" --username zawmyohtet2009 --password ${{ secrets.TOKEN }} --store-password-in-clear-text --configfile Wrapper/nuget.config
+
+      - name: Restore dependencies
+        run: dotnet restore Wrapper/Wrapper.sln --configfile Wrapper/nuget.config
+
+      - name: Build
+        run: |
+            msbuild /p:Configuration=Release Wrapper/Wrapper.sln
+            ls
+
+      - name: Create Package
+        shell: bash
+        run: |
+          cd Wrapper
+          REF="${GITHUB_REF}"
+          if [[ "$REF" == "refs/heads/main" ]]; then
+            nuget.exe pack Wrapper.nuspec -version "1.0.1.0-dev.${GITHUB_RUN_NUMBER}"
+          elif [[ "$REF" == refs/heads/release/* ]]; then
+            nuget.exe pack Wrapper.nuspec -version "1.0.1.0"
+          fi          
+          ls
+  
+      - name: Push Package
+        run: |
+          cd Wrapper
+          pwd
+          ls
+          dotnet nuget push Wrapper.*.nupkg --source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" -k ${{ secrets.TOKEN }}
