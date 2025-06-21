@@ -22,7 +22,7 @@ jobs:
         run: curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe --output nuget.exe 
         
       - name: Authenticate to GitHub Packages
-        run: ./nuget.exe sources Add -Name "github" -Source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" --username zawmyohtet2009 --password ${{ secrets.TOKEN }}"
+        run: ./nuget.exe sources Add -Name "github" -Source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" --username zawmyohtet2009 --password ${{ secrets.TOKEN }} --store-password-in-clear-text --configfile Wrapper/nuget.config"
 
       - name: Restore dependencies
         run: ./nuget.exe restore Wrapper/Wrapper.sln -ConfigFile Wrapper/nuget.config
