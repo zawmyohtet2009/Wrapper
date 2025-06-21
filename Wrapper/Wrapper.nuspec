@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Wrapper</id>
+    <version>0.0.0</version> <!-- Placeholder -->
+    <authors>zawmyohtet2009</authors>
+    <owners>Zaw</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An advance calculator library for demonstration purposes.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright © 2025 Zaw</copyright>
+    <tags>zaw-nuget-package-wrapper</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\Wrapper.dll" target="lib\net47\" />
+  </files>
+</package>

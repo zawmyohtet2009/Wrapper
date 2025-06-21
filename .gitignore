@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Wrapper/.vs/Wrapper/v16
+/Wrapper/bin/Release
+/Wrapper/obj
