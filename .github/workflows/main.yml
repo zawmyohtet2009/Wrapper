@@ -10,8 +10,8 @@ on:
 # Add permissions here for the GITHUB_TOKEN
 permissions:
   contents: read # Required to checkout code
-  packages: read # Required to publish packages (and implicitly read for your own packages)
-  packages: write
+  packages: write # Required to publish packages (and implicitly read for your own packages)
+
 
 jobs:
   job_1:
