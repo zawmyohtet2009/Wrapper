@@ -48,8 +48,12 @@ jobs:
           cd Wrapper
           REF="${GITHUB_REF}"
           if [[ "$REF" == "refs/heads/main" ]]; then
+             # This will likely result in a package version like 1.0.1-dev.123
+             # The reason your 1.0.1.0 is becoming 1.0.1 is due to NuGet's adherence to Semantic Versioning (SemVer) 
+             # and its internal normalization rules.
             nuget.exe pack Wrapper.nuspec -version "1.0.1.0-dev.${GITHUB_RUN_NUMBER}"
           elif [[ "$REF" == refs/heads/release/* ]]; then
+            # Recommend changing this to 1.0.1 for standard SemVer
             nuget.exe pack Wrapper.nuspec -version "1.0.1.0"
           fi          
           ls

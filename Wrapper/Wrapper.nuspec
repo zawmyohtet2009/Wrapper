@@ -10,6 +10,9 @@
     <releaseNotes>Initial release.</releaseNotes>
     <copyright>Copyright © 2025 Zaw</copyright>
     <tags>zaw-nuget-package-wrapper</tags>
+    <dependencies>
+      <dependency id="zawmyohtet2009.Common" version="[1.0.1.0-*, 1.0.1.0)" />
+    </dependencies>
   </metadata>
   <files>
     <file src="bin\Release\Wrapper.dll" target="lib\net47\" />
