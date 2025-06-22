@@ -5,19 +5,6 @@ namespace Wrapper
 {
     public class AdvanceCalculator : IAdvanceCalculator
     {
-        // Basic operations (can be part of a separate IBasicCalculator interface or added here)
-        public double Add(double a, double b) => a + b;
-        public double Subtract(double a, double b) => a - b;
-        public double Multiply(double a, double b) => a * b;
-        public double Divide(double a, double b)
-        {
-            if (b == 0)
-            {
-                throw new DivideByZeroException("Cannot divide by zero.");
-            }
-            return a / b;
-        }
-
         // Implementation of ICalculatorAdvancedFunctions methods
         public double Power(double baseValue, double exponent)
         {
