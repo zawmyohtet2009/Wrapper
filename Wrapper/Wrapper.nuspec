@@ -11,7 +11,7 @@
     <copyright>Copyright © 2025 Zaw</copyright>
     <tags>zaw-nuget-package-wrapper</tags>
     <dependencies>
-      <dependency id="zawmyohtet2009.Common" version="[1.0.1.0-*, 1.0.1.0)" />
+      <dependency id="zawmyohtet2009.Common" version="[1.0.1.0-dev.*, 1.0.1.0)" />
     </dependencies>
   </metadata>
   <files>
