@@ -33,11 +33,11 @@ jobs:
         run: curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe --output nuget.exe 
 
       - name: Restore dependencies
-        run: dotnet restore Wrapper\Wrapper.sln --configfile ${{ github.workspace }} Wrapper\nuget.config  --verbosity diag
+        run: dotnet restore Wrapper\Wrapper.sln --configfile=Wrapper\nuget.config --verbosity diag
 
       - name: Build
         run: |
-            msbuild /p:Configuration=Release Wrapper\Wrapper.sln --configfile Wrapper\nuget.config
+            msbuild /p:Configuration=Release Wrapper\Wrapper.sln --configfile=Wrapper\nuget.config
             ls
 
       - name: Create Package
