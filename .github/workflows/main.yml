@@ -32,6 +32,14 @@ jobs:
       - name: Download NuGet.exe
         run: curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe --output nuget.exe 
 
+      - name: Show nuget.config content
+        run: cat Wrapper\nuget.config
+        shell: bash
+        
+      - name: List Environment Variables
+        run: Get-ChildItem Env:
+        shell: pwsh    
+  
       - name: Restore dependencies
         run: dotnet restore Wrapper\Wrapper.sln --configfile=Wrapper\nuget.config --verbosity diag
 
