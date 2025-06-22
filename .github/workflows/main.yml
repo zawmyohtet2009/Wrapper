@@ -31,14 +31,6 @@ jobs:
           
       - name: Download NuGet.exe
         run: curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe --output nuget.exe 
-
-      - name: Show nuget.config content
-        run: cat Wrapper/nuget.config
-        shell: bash  
-  
-      - name: Find nuget.config files
-        run: find . -name "nuget.config"
-        shell: bash
   
       - name: Clear NuGet Caches
         run: dotnet nuget locals all --clear
@@ -48,11 +40,11 @@ jobs:
             # Explicitly pass the GITHUB_TOKEN as an environment variable
             # This can sometimes resolve subtle issues with how NuGet picks it up
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: dotnet restore Wrapper/Wrapper.sln --configfile=Wrapper/nuget.config --verbosity diag
+        run: dotnet restore Wrapper/Wrapper.sln --configfile=Wrapper/nuget.config
 
       - name: Build
         run: |
-            msbuild /p:Configuration=Release Wrapper/Wrapper.sln --configfile=Wrapper/nuget.config
+            msbuild /p:Configuration=Release Wrapper/Wrapper.sln
             ls
 
       - name: Create Package
