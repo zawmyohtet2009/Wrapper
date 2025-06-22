@@ -11,7 +11,7 @@ on:
 permissions:
   contents: read # Required to checkout code
   packages: read # Required to publish packages (and implicitly read for your own packages)
-
+  packages: write
 
 jobs:
   job_1:
