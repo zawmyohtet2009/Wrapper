@@ -7,6 +7,12 @@ on:
     branches: [ "release/*" ]
   workflow_dispatch:
 
+# Add permissions here for the GITHUB_TOKEN
+permissions:
+  contents: read # Required to checkout code
+  packages: write # Required to publish packages (and implicitly read for your own packages)
+
+
 jobs:
   job_1:
     name: Create Nuget Package
@@ -17,18 +23,21 @@ jobs:
 
       - name: Setup MSBuild Path
         uses: microsoft/setup-msbuild@v2
-      
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x' # Or whatever .NET version your projects use
+          
       - name: Download NuGet.exe
         run: curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe --output nuget.exe 
 
       - name: Restore dependencies
-        run: |
-              dotnet nuget update source github --source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" --username zawmyohtet2009 --password ${{ secrets.TOKEN }} --store-password-in-clear-text --configfile ${{ github.workspace }}/Wrapper/nuget.config
-              dotnet restore Wrapper/Wrapper.sln --configfile ${{ github.workspace }}/Wrapper/nuget.config
+        run: dotnet restore Wrapper/Wrapper.sln --configfile ${{ github.workspace }}/Wrapper/nuget.config
 
       - name: Build
         run: |
-            msbuild /p:Configuration=Release Wrapper/Wrapper.sln
+            msbuild /p:Configuration=Release Wrapper/Wrapper.sln --configfile ${{ github.workspace }}/Wrapper/nuget.config
             ls
 
       - name: Create Package
@@ -48,5 +57,4 @@ jobs:
           cd Wrapper
           pwd
           ls
-          dotnet nuget update source github --source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" --username zawmyohtet2009 --password ${{ secrets.TOKEN }} --store-password-in-clear-text --configfile nuget.config
-          dotnet nuget push Wrapper.*.nupkg --source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" -k ${{ secrets.TOKEN }}
+          dotnet nuget push Wrapper.*.nupkg --source "https://nuget.pkg.github.com/zawmyohtet2009/index.json" -k ${{ secrets.GITHUB_TOKEN }}
