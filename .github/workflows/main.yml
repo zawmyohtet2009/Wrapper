@@ -34,11 +34,7 @@ jobs:
 
       - name: Show nuget.config content
         run: cat Wrapper\nuget.config
-        shell: bash
-        
-      - name: List Environment Variables
-        run: Get-ChildItem Env:
-        shell: pwsh    
+        shell: bash  
   
       - name: Restore dependencies
         run: dotnet restore Wrapper\Wrapper.sln --configfile=Wrapper\nuget.config --verbosity diag
