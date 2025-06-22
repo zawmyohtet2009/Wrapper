@@ -36,7 +36,18 @@ jobs:
         run: cat Wrapper/nuget.config
         shell: bash  
   
+      - name: Find nuget.config files
+        run: find . -name "nuget.config"
+        shell: bash
+  
+      - name: Clear NuGet Caches
+        run: dotnet nuget locals all --clear
+  
       - name: Restore dependencies
+        env:
+            # Explicitly pass the GITHUB_TOKEN as an environment variable
+            # This can sometimes resolve subtle issues with how NuGet picks it up
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: dotnet restore Wrapper/Wrapper.sln --configfile=Wrapper/nuget.config --verbosity diag
 
       - name: Build
