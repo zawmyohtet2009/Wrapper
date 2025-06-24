@@ -4,6 +4,9 @@ using Wrapper.Interface;
 
 namespace Wrapper
 {
+    /// <summary>
+    /// Wrapper
+    /// </summary>
     public class BasicCalculator : IBasicCalculator
     {
         private readonly ICalculator _commonCalculator;
