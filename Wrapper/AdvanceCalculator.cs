@@ -3,6 +3,9 @@ using Wrapper.Interface;
 
 namespace Wrapper
 {
+    /// <summary>
+    /// Advance Calculator
+    /// </summary>
     public class AdvanceCalculator : IAdvanceCalculator
     {
         // Implementation of ICalculatorAdvancedFunctions methods
