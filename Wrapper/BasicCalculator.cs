@@ -5,7 +5,7 @@ using Wrapper.Interface;
 namespace Wrapper
 {
     /// <summary>
-    /// Wrapper
+    /// Basic Calculator
     /// </summary>
     public class BasicCalculator : IBasicCalculator
     {
