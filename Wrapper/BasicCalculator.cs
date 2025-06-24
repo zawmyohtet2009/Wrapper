@@ -6,31 +6,31 @@ namespace Wrapper
 {
     public class BasicCalculator : IBasicCalculator
     {
-        private readonly ICalculator commonCalculator;
+        private readonly ICalculator _commonCalculator;
 
         public BasicCalculator()
         {
-            commonCalculator = new Calculator();
+            _commonCalculator = new Calculator();
         }
         
         public int WrapperAdd(int a, int b)
         {
-            return commonCalculator.Add(a, b);
+            return _commonCalculator.Add(a, b);
         }
 
         public int WrapperSubtract(int a, int b)
         {
-            return commonCalculator.Subtract(a, b);
+            return _commonCalculator.Subtract(a, b);
         }
 
         public int WrapperMultiply(int a, int b)
         {
-            return commonCalculator.Multiply(a, b);
+            return _commonCalculator.Multiply(a, b);
         }
 
         public int WrapperDivide(int a, int b)
         {
-            return commonCalculator.Divide(a, b);
+            return _commonCalculator.Divide(a, b);
         }
     }
 }
