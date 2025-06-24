@@ -2,9 +2,7 @@ name: Create and Push Nuget Package
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "release/*" ]
+    branches: [ "main", "release/*" ]
   workflow_dispatch:
 
 # Add permissions here for the GITHUB_TOKEN
@@ -19,7 +17,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup MSBuild Path
         uses: microsoft/setup-msbuild@v2
