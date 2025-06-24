@@ -3,6 +3,9 @@ name: Create and Push Nuget Package
 on:
   push:
     branches: [ "main", "release/*" ]
+    paths-ignore:
+    - '.github/workflows/**'
+
   workflow_dispatch:
 
 # Add permissions here for the GITHUB_TOKEN
