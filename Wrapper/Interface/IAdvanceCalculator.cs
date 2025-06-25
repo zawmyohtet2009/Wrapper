@@ -3,7 +3,7 @@
 namespace Wrapper.Interface
 {
     /// <summary>
-    /// IAdvanceCalculator
+    /// IAdvanceCalculator interface
     /// </summary>
     public interface IAdvanceCalculator
     {
