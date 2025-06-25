@@ -2,6 +2,9 @@
 
 namespace Wrapper.Interface
 {
+    /// <summary>
+    /// IAdvanceCalculator
+    /// </summary>
     public interface IAdvanceCalculator
     {
         /// <summary>

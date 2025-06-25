@@ -35,7 +35,7 @@ jobs:
         env:
             # Explicitly pass the GITHUB_TOKEN as an environment variable
             # This can sometimes resolve subtle issues with how NuGet picks it up
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: dotnet restore Wrapper/Wrapper.sln
 
       - name: Build
