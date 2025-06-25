@@ -1,6 +1,9 @@
 ﻿
 namespace Wrapper.Interface
 {
+    /// <summary>
+    /// IBasicCalculator interface
+    /// </summary>
     public interface IBasicCalculator
     {
         int WrapperAdd(int a, int b);
