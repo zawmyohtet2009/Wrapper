@@ -22,8 +22,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: Install VS 2017 Build Tools
-        run: choco install visualstudio2017buildtools --version=15.9.73 --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+        with:
+            vs-version: '[15.0,16.0)'  # Targets Visual Studio 2017
           
       - name: Download NuGet.exe
         run: curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe --output nuget.exe 

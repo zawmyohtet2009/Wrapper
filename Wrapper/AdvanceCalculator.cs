@@ -11,7 +11,7 @@ namespace Wrapper
         // Implementation of ICalculatorAdvancedFunctions methods
         public double Power(double baseValue, double exponent)
         {
-            return Math.Pow(baseValue, exponent);
+            return Math.Pow(baseValue, exponent); 
         }
 
         public double SquareRoot(double value)
