@@ -22,8 +22,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: Setup MSBuild Path
-        uses: microsoft/setup-msbuild@v2
+      - name: Install VS 2017 Build Tools
+        run: choco install visualstudio2017buildtools --version=15.9.73 --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
           
       - name: Download NuGet.exe
         run: curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe --output nuget.exe 
@@ -40,7 +40,7 @@ jobs:
 
       - name: Build
         run: |
-            msbuild /p:Configuration=Release Wrapper/Wrapper.sln
+            "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe" /p:Configuration=Release Wrapper/Wrapper.sln
             ls
 
       - name: Create Package

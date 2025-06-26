@@ -1,5 +1,4 @@
-﻿
-namespace Wrapper.Interface
+﻿namespace Wrapper.Interface
 {
     /// <summary>
     /// IBasicCalculator interface
